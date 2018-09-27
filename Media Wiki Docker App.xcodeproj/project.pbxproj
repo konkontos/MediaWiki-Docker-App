@@ -1,0 +1,67 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXGroup section */
+		8548ECF0215CC3FF00EFB7E6 = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		8548ECF1215CC3FF00EFB7E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+			};
+			buildConfigurationList = 8548ECF4215CC3FF00EFB7E6 /* Build configuration list for PBXProject "Media Wiki Docker App" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8548ECF0215CC3FF00EFB7E6;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		8548ECF5215CC3FF00EFB7E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		8548ECF6215CC3FF00EFB7E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8548ECF4215CC3FF00EFB7E6 /* Build configuration list for PBXProject "Media Wiki Docker App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8548ECF5215CC3FF00EFB7E6 /* Debug */,
+				8548ECF6215CC3FF00EFB7E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8548ECF1215CC3FF00EFB7E6 /* Project object */;
+}

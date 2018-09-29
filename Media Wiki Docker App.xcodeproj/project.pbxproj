@@ -6,11 +6,60 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXFileReference section */
+		852A4C9F215E33DA002EC700 /* start-rebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "start-rebuild.sh"; sourceTree = "<group>"; };
+		852A4CA0215E3471002EC700 /* apache_restart.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = apache_restart.sh; sourceTree = "<group>"; };
+		852A4CA2215F682C002EC700 /* cgi_img_auth.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = cgi_img_auth.php; sourceTree = "<group>"; };
+		852A4D60215F8683002EC700 /* markdown.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = markdown.php; sourceTree = "<group>"; };
+		852A4D61215F8DCE002EC700 /* LocalSettings_Sample.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = LocalSettings_Sample.php; sourceTree = "<group>"; };
+		8548ECF7215CC44B00EFB7E6 /* sample.env */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.env; sourceTree = "<group>"; };
+		8548ECF8215CC44B00EFB7E6 /* Dockerfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Dockerfile; sourceTree = "<group>"; };
+		8548ECF9215CC44B00EFB7E6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8548ECFA215CC44B00EFB7E6 /* docker-compose.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = "docker-compose.yml"; sourceTree = "<group>"; };
+		8548ECFD215CC48D00EFB7E6 /* php.ini */ = {isa = PBXFileReference; lastKnownFileType = text; path = php.ini; sourceTree = "<group>"; };
+		8548ECFE215CC49400EFB7E6 /* enter_app_container.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = enter_app_container.sh; sourceTree = "<group>"; };
+		8548ECFF215CC49400EFB7E6 /* start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = start.sh; sourceTree = "<group>"; };
+		8548ED00215CC49400EFB7E6 /* stop.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = stop.sh; sourceTree = "<group>"; };
+		8548ED02215E186300EFB7E6 /* apache_base_ssl_on.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = apache_base_ssl_on.conf; sourceTree = "<group>"; };
+		8548ED03215E186300EFB7E6 /* apache_base_ssl_off.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = apache_base_ssl_off.conf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		8548ECF0215CC3FF00EFB7E6 = {
 			isa = PBXGroup;
 			children = (
+				8548ECF9215CC44B00EFB7E6 /* README.md */,
+				8548ECF7215CC44B00EFB7E6 /* sample.env */,
+				8548ECF8215CC44B00EFB7E6 /* Dockerfile */,
+				8548ECFA215CC44B00EFB7E6 /* docker-compose.yml */,
+				8548ED01215CCCCA00EFB7E6 /* Scripts */,
+				8548ECFB215CC46200EFB7E6 /* Config */,
 			);
+			sourceTree = "<group>";
+		};
+		8548ECFB215CC46200EFB7E6 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				852A4D61215F8DCE002EC700 /* LocalSettings_Sample.php */,
+				8548ED03215E186300EFB7E6 /* apache_base_ssl_off.conf */,
+				8548ED02215E186300EFB7E6 /* apache_base_ssl_on.conf */,
+				8548ECFD215CC48D00EFB7E6 /* php.ini */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		8548ED01215CCCCA00EFB7E6 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				8548ECFE215CC49400EFB7E6 /* enter_app_container.sh */,
+				8548ECFF215CC49400EFB7E6 /* start.sh */,
+				852A4CA0215E3471002EC700 /* apache_restart.sh */,
+				852A4C9F215E33DA002EC700 /* start-rebuild.sh */,
+				8548ED00215CC49400EFB7E6 /* stop.sh */,
+				852A4CA2215F682C002EC700 /* cgi_img_auth.php */,
+				852A4D60215F8683002EC700 /* markdown.php */,
+			);
+			name = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

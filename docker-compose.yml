@@ -1,0 +1,98 @@
+version: '3.5'
+
+networks:
+
+    app_network:
+        name: "${WIKI_DOCKER_NETWORK:-wiki}"
+
+services:
+
+    database:
+        restart: always
+        container_name: "${CONTAINER_WIKI_DB_NAME:-wiki_db}"
+        networks:
+            - app_network
+        image: mariadb
+        environment:
+            - MYSQL_DATABASE=${WIKI_MYSQL_DATABASE:-wiki}
+            - MYSQL_ROOT_PASSWORD=${WIKI_MYSQL_ROOT_PASSWORD:-root}
+            - MYSQL_USER=${WIKI_MYSQL_USER:-wiki}
+            - MYSQL_PASSWORD=${WIKI_MYSQL_PASSWORD:-passwd}
+            - MYSQL_ALLOW_EMPTY_PASSWORD=${WIKI_MYSQL_EMPTY_PASSWORD:-no}
+        volumes:
+            - "${WIKI_ROOT_FOLDER:?'Please, specify root folder in .env file.'}/database:/var/lib/mysql"
+
+    mediawiki:
+        image: handmadeapps/mediawiki
+        build:
+            context: .
+            args:
+                - USE_SSL=off
+        restart: always
+        container_name: "${CONTAINER_WIKI_NAME:-wiki}"
+        depends_on:
+            - database
+        ports:
+            - "${WIKI_PORT:-8080}:80"
+        links:
+            - database
+        networks:
+            - app_network
+        volumes:
+
+            # NOTE 1:
+            # After initial setup, download LocalSettings.php to the same directory as
+            # this yaml and uncomment the following line and use compose to restart
+            # the mediawiki service
+            # - ./LocalSettings.php:/var/www/html/LocalSettings.php
+            #
+            # NOTE 2:
+            # At 1st run, enable the `hostmount` volume, enter into the `mediawiki` container and copy all the files under `/var/www/html`
+            # to `hostmount`.
+            # In subsequent runs, use the `/var/www/html` volume for access to the mediawiki folder
+
+            - "${WIKI_LOGS_FOLDER:?'Please, specify logs folder in .env file.'}:/var/log/apache2"
+            - "${WIKI_ROOT_FOLDER:?'Please, specify root folder in .env file.'}/html:/var/www/html"
+#            - "${WIKI_ROOT_FOLDER:?'Please, specify root folder in .env file.'}/html:/hostmount"
+
+
+
+    mediawikissl:
+            image: handmadeapps/mediawiki
+            build:
+                context: .
+                args:
+                    - USE_SSL=on
+            restart: always
+            container_name: "${CONTAINER_WIKI_NAME:-wiki}"
+            depends_on:
+                - database
+            ports:
+                - "${WIKI_PORT:-8080}:443"
+            links:
+                - database
+            networks:
+                - app_network
+            environment:
+                - WIKI_APACHE_SSL_CERT
+                - WIKI_APACHE_SSL_KEY
+            volumes:
+
+                # NOTE 1:
+                # After initial setup, download LocalSettings.php to the same directory as
+                # this yaml and uncomment the following line and use compose to restart
+                # the mediawiki service
+                # - ./LocalSettings.php:/var/www/html/LocalSettings.php
+                #
+                #
+                # NOTE 2:
+                # At 1st run, enable the `hostmount` volume, enter into the `mediawiki` container and copy all the files under `/var/www/html`
+                # to `hostmount`.
+                # In subsequent runs, use the `/var/www/html` volume for access to the mediawiki folder
+
+                - "${WIKI_LOCAL_SSL_FOLDER:?'Please, specify ssl certs folder in .env file.'}:/etc/ssl"
+                - "${WIKI_LOGS_FOLDER:?'Please, specify logs folder in .env file.'}:/var/log/apache2"
+                - "${WIKI_ROOT_FOLDER:?'Please, specify root folder in .env file.'}/html:/var/www/html"
+                #- "${WIKI_ROOT_FOLDER:?'Please, specify root folder in .env file.'}/html:/hostmount"
+
+
